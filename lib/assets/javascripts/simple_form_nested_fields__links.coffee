@@ -38,7 +38,7 @@ do ($ = jQuery, window, document) ->
       if $item.hasClass(@settings.new_item_class_name)
         $item.remove()
       else
-        @$element.prev('input[type=hidden]').val('1')
+        $item.find('input[type=hidden]').val('1')
         $item.hide()
 
   # A really lightweight plugin wrapper around the constructor,

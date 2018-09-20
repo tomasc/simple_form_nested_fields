@@ -2,7 +2,7 @@
 #= require simple_form_nested_fields__sortable
 
 do ($ = jQuery, window, document) ->
-  pluginName = 'SimpleFormNestedFields__Base'
+  pluginName = 'SimpleFormNestedFields'
   defaults =
     debug: false
 
@@ -30,6 +30,3 @@ do ($ = jQuery, window, document) ->
     @each ->
       if !$.data(@, "plugin_#{pluginName}")
         $.data(@, "plugin_#{pluginName}", new Plugin(@, options))
-
-$ ->
-  $('.simple_form_nested_fields').SimpleFormNestedFields__Base()

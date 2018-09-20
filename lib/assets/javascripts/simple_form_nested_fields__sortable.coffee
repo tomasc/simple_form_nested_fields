@@ -25,6 +25,7 @@ do ($ = jQuery, window, document) ->
         ghostClass: '.simple_form_nested_fields__ghost',
         handle: '.simple_form_nested_fields__item_handle',
 
+        # TODO: onAdd is not being triggered?
         onAdd: (e) => @update_item_positions(),
         onUpdate: (e) => @update_item_positions(),
         onRemove: (e) => @update_item_positions(),
