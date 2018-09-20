@@ -1,0 +1,17 @@
+development:
+  clients:
+    default:
+      database: simple_form_nested_fields_development
+      hosts:
+        - 127.0.0.1:27017
+  options:
+    preload_models: true
+
+test:
+  clients:
+    default:
+      database: simple_form_nested_fields_test
+      hosts:
+        - 127.0.0.1:27017
+  options:
+    preload_models: true

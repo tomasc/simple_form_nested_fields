@@ -1,0 +1,19 @@
+<%= link_to('New', new_my_doc_path) %>
+
+<hr>
+
+<%- @my_docs.each do |my_doc| %>
+  <ul>
+    <li>
+      <%= my_doc.id %>
+      <ul>
+        <%- my_doc.texts.each do |text| %>
+          <li>
+            <%= text.body %>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to 'Destroy', my_doc_path(my_doc), method: :delete %>
+    </li>
+  </ul>
+<% end %>

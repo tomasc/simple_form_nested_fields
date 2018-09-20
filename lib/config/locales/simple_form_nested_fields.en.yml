@@ -1,0 +1,5 @@
+en:
+  simple_form_nested_fields:
+    links:
+      add: 'Add %{model_name}'
+      remove: 'Remove'
