@@ -1,0 +1,7 @@
+<%= simple_form_for @my_doc do |f| %>
+  <%= f.nested_fields_for :titles %>
+  <hr>
+  <%= f.nested_fields_for :texts, nil, sortable: true %>
+  <hr>
+  <%= f.submit %>
+<% end %>

@@ -17,6 +17,20 @@ class MyDocsController < ApplicationController
     end
   end
 
+  def edit
+    @my_doc = MyDoc.find(params[:id])
+  end
+
+  def update
+    @my_doc = MyDoc.find(params[:id])
+
+    if @my_doc.update_attributes(my_doc_params)
+      redirect_to my_docs_path
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @my_doc = MyDoc.find(params[:id])
     @my_doc.destroy!
