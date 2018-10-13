@@ -19,12 +19,12 @@ class SimpleFormNestedFields::NestedFieldsBuilderTest < ActionView::TestCase
 
     it { nested_fields.must_match(/simple_form_nested_fields__title/) }
     it { nested_fields.must_match(/simple_form_nested_fields__items/) }
-    it { nested_fields.must_match(/simple_form_nested_fields__link--add/) }
+    it { nested_fields.must_match(/simple_form_nested_fields__link__add/) }
 
     describe 'sortable' do
       let(:options) { { sortable: true } }
 
-      it { nested_fields.must_match(/simple_form_nested_fields--sortable/) }
+      it { nested_fields.must_match(/simple_form_nested_fields__sortable/) }
     end
 
     describe 'with items' do

@@ -36,8 +36,7 @@ module SimpleFormNestedFields
     end
 
     def partial_path
-      # object.to_view_path("#{record_name}/fields")
-      File.join([relation.klass.model_name.collection, 'fields'])
+      File.join(object.model_name.collection, relation.klass.model_name.collection, 'fields')
     end
 
     def relation
@@ -117,7 +116,7 @@ module SimpleFormNestedFields
     def bem_class(e: nil, m: nil)
       res = [BASE_DOM_CLASS]
       res << "__#{e}" if e.present?
-      res << "--#{m}" if m.present?
+      res << "__#{m}" if m.present?
       res.join
     end
   end

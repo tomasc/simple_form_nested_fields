@@ -5,21 +5,21 @@ describe 'Nested Fields', :capybara do
 
   describe 'items' do
     it 'does not have any items to begin with' do
-      page.wont_have_selector '.simple_form_nested_fields__item--new'
+      page.wont_have_selector '.simple_form_nested_fields__item__new'
     end
 
     describe 'adding and removing' do
       let(:body) { 'Foo bar' }
 
-      before { within(:css, '.simple_form_nested_fields--titles') { add_item } }
+      before { within(:css, '.simple_form_nested_fields__titles') { add_item } }
 
       it 'adds an item when clicking the add link', js: true do
-        page.must_have_selector '.simple_form_nested_fields__item--new'
+        page.must_have_selector '.simple_form_nested_fields__item__new'
       end
 
       it 'removes an item when clicking the remove link', js: true do
         remove_item
-        page.wont_have_selector '.simple_form_nested_fields__item--new'
+        page.wont_have_selector '.simple_form_nested_fields__item__new'
       end
 
       it 'allows to store the document', js: true do
@@ -32,7 +32,7 @@ describe 'Nested Fields', :capybara do
     describe 'sortable' do
       before do
         (1..3).each do |index|
-          within(:css, '.simple_form_nested_fields--texts') do
+          within(:css, '.simple_form_nested_fields__texts') do
             add_item
 
             within(:css, ".simple_form_nested_fields__item:nth-child(#{index})") do
@@ -60,11 +60,11 @@ describe 'Nested Fields', :capybara do
   private
 
   def add_item
-    find(:css, '.simple_form_nested_fields__link--add').click
+    find(:css, '.simple_form_nested_fields__link__add').click
   end
 
   def remove_item
-    find(:css, '.simple_form_nested_fields__link--remove').click
+    find(:css, '.simple_form_nested_fields__link__remove').click
   end
 
   def submit_form

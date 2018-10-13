@@ -2,7 +2,7 @@ do ($ = jQuery, window, document) ->
   pluginName = 'SimpleFormNestedFields__Links'
   defaults =
     debug: false
-    new_item_class_name: 'simple_form_nested_fields__item--new'
+    new_item_class_name: 'simple_form_nested_fields__item__new'
     regexp: new RegExp("__INDEX_PLACEHOLDER__", 'g')
 
   class Plugin
@@ -18,11 +18,11 @@ do ($ = jQuery, window, document) ->
         e.preventDefault()
         link = e.target
         switch
-          when link.classList.contains('simple_form_nested_fields__link--add') then @add_new_item(link)
-          when link.classList.contains('simple_form_nested_fields__link--remove') then @remove_item(link)
+          when link.classList.contains('simple_form_nested_fields__link__add') then @add_new_item(link)
+          when link.classList.contains('simple_form_nested_fields__link__remove') then @remove_item(link)
 
     destroy: ->
-      @$element.off "click.#{@_name}", '.simple_form_nested_fields__link-add'
+      @$element.off "click.#{@_name}", '.simple_form_nested_fields__link__add'
 
     get_index: -> new Date().getTime()
     get_template: (link) -> $(link).data('template').replace(@options.regexp, @get_index())
