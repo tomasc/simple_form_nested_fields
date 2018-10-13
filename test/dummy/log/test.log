@@ -2540,3 +2540,303 @@ MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"
 MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.000s
 MONGODB | 127.0.0.1:27017 | admin.endSessions | STARTED | {"endSessions"=>[{"id"=><BSON::Binary:0x70234343679980 type=uuid data=0x1708d316abfd45f0...>}]}
 MONGODB | 127.0.0.1:27017 | admin.endSessions | SUCCEEDED | 0.000s
+-------------------------------------------------------------------------------
+Nested Fields::capybara::items: test_0001_does not have any items to begin with
+-------------------------------------------------------------------------------
+MONGODB | EVENT: #<Mongo::Monitoring::Event::TopologyOpening topology=Unknown>
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | EVENT: #<Mongo::Monitoring::Event::ServerOpening address=127.0.0.1:27017 topology=Unknown>
+MONGODB | Server 127.0.0.1:27017 initializing.
+MONGODB | EVENT: #<Mongo::Monitoring::Event::TopologyChanged prev=Unknown new=Single>
+MONGODB | Topology type 'unknown' changed to type 'single'.
+MONGODB | EVENT: #<Mongo::Monitoring::Event::ServerDescriptionChanged>
+MONGODB | Server description for 127.0.0.1:27017 changed from 'unknown' to 'standalone'.
+MONGODB | EVENT: #<Mongo::Monitoring::Event::TopologyChanged prev=Single new=Single>
+MONGODB | There was a change in the members of the 'single' topology.
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | STARTED | {"listCollections"=>1, "cursor"=>{}, "nameOnly"=>true, "filter"=>{"name"=>{"$not"=>/system\.|\$/}}, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | SUCCEEDED | 0.001s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"delete"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}, "deletes"=>[{"q"=>{}, "limit"=>0}]}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.000s
+Started GET "/my_docs/new" for 127.0.0.1 at 2018-10-13 09:29:24 +0200
+Processing by MyDocsController#new as HTML
+  Rendering my_docs/new.html.erb within layouts/application
+  Rendered my_doc/titles/_fields.html.erb (8.8ms)
+  Rendered my_doc/texts/_fields.html.erb (5.6ms)
+  Rendered my_docs/new.html.erb within layouts/application (74.0ms)
+Completed 200 OK in 303ms (Views: 301.7ms)
+---------------------------------------------------------------------------------
+Nested Fields::capybara::items::sortable: test_0001_allows to rearrange the items
+---------------------------------------------------------------------------------
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | STARTED | {"listCollections"=>1, "cursor"=>{}, "nameOnly"=>true, "filter"=>{"name"=>{"$not"=>/system\.|\$/}}, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | SUCCEEDED | 0.002s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"delete"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}, "deletes"=>[{"q"=>{}, "limit"=>0}]}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.000s
+Started GET "/my_docs/new" for 127.0.0.1 at 2018-10-13 09:29:25 +0200
+Processing by MyDocsController#new as HTML
+  Rendering my_docs/new.html.erb within layouts/application
+  Rendered my_doc/titles/_fields.html.erb (2.1ms)
+  Rendered my_doc/texts/_fields.html.erb (4.5ms)
+  Rendered my_docs/new.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 13ms (Views: 12.6ms)
+Started GET "/assets/application-0fbeb72ee2478a78dc9d9bb0247f4e1c4db83d71d63c132ef2c14643021b5fef.css" for 127.0.0.1 at 2018-10-13 09:29:25 +0200
+Started GET "/assets/application-2c03513d35427966017b9801cd88573dd2dd004941da43a163fe9e8b214c9fdf.js" for 127.0.0.1 at 2018-10-13 09:29:25 +0200
+Started POST "/my_docs" for 127.0.0.1 at 2018-10-13 09:29:26 +0200
+Processing by MyDocsController#create as HTML
+  Parameters: {"utf8"=>"✓", "my_doc"=>{"texts_attributes"=>{"1539415765913"=>{"position"=>"1", "body"=>"2"}, "1539415765750"=>{"position"=>"2", "body"=>"1"}, "1539415766028"=>{"position"=>"3", "body"=>"3"}}}, "commit"=>"Create My doc"}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.insert | STARTED | {"insert"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}, "documents"=>[{"_id"=>BSON::ObjectId('5bc19ed69313108290dd1328'), "texts"=>[{"_id"=>BSON::ObjectId('5bc19ed69313108290dd1325')...
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.insert | SUCCEEDED | 0.001s
+Redirected to http://127.0.0.1:61679/my_docs
+Completed 302 Found in 5ms
+Started GET "/my_docs" for 127.0.0.1 at 2018-10-13 09:29:26 +0200
+Processing by MyDocsController#index as HTML
+  Rendering my_docs/index.html.erb within layouts/application
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | STARTED | {"find"=>"my_docs", "filter"=>{}, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | SUCCEEDED | 0.000s
+  Rendered my_docs/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 7ms (Views: 4.9ms)
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | STARTED | {"find"=>"my_docs", "filter"=>{}, "sort"=>{"_id"=>1}, "limit"=>1, "singleBatch"=>true, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | SUCCEEDED | 0.000s
+-----------------------------------------------
+#nested_fields::with items: test_0001_anonymous
+-----------------------------------------------
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.insert | STARTED | {"insert"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}, "documents"=>[{"_id"=>BSON::ObjectId('5bc19ed69313108290dd132e'), "texts"=>[{"_id"=>BSON::ObjectId('5bc19ed69313108290dd1329')...
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.insert | SUCCEEDED | 0.003s
+  Rendered my_doc/texts/_fields.html.erb (4.0ms)
+  Rendered my_doc/texts/_fields.html.erb (3.6ms)
+  Rendered my_doc/texts/_fields.html.erb (3.4ms)
+  Rendered my_doc/texts/_fields.html.erb (4.4ms)
+  Rendered my_doc/texts/_fields.html.erb (3.2ms)
+  Rendered my_doc/texts/_fields.html.erb (3.1ms)
+-----------------------------------
+#nested_fields: test_0001_anonymous
+-----------------------------------
+  Rendered my_doc/texts/_fields.html.erb (3.6ms)
+-----------------------------------
+#nested_fields: test_0003_anonymous
+-----------------------------------
+  Rendered my_doc/texts/_fields.html.erb (62.2ms)
+-----------------------------------
+#nested_fields: test_0002_anonymous
+-----------------------------------
+  Rendered my_doc/texts/_fields.html.erb (13.9ms)
+---------------------------------------------
+#nested_fields::sortable: test_0001_anonymous
+---------------------------------------------
+  Rendered my_doc/texts/_fields.html.erb (3.8ms)
+------------------------------------------------------------------------------------------------------------
+Nested Fields::capybara::items::adding and removing: test_0002_removes an item when clicking the remove link
+------------------------------------------------------------------------------------------------------------
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | STARTED | {"listCollections"=>1, "cursor"=>{}, "nameOnly"=>true, "filter"=>{"name"=>{"$not"=>/system\.|\$/}}, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | SUCCEEDED | 0.001s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"delete"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}, "deletes"=>[{"q"=>{}, "limit"=>0}]}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.000s
+Started GET "/my_docs/new" for 127.0.0.1 at 2018-10-13 09:29:26 +0200
+Processing by MyDocsController#new as HTML
+  Rendering my_docs/new.html.erb within layouts/application
+  Rendered my_doc/titles/_fields.html.erb (2.9ms)
+  Rendered my_doc/texts/_fields.html.erb (5.7ms)
+  Rendered my_docs/new.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 19ms (Views: 18.5ms)
+-------------------------------------------------------------------------------------------
+Nested Fields::capybara::items::adding and removing: test_0003_allows to store the document
+-------------------------------------------------------------------------------------------
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | STARTED | {"listCollections"=>1, "cursor"=>{}, "nameOnly"=>true, "filter"=>{"name"=>{"$not"=>/system\.|\$/}}, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | SUCCEEDED | 0.000s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"delete"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}, "deletes"=>[{"q"=>{}, "limit"=>0}]}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.002s
+Started GET "/my_docs/new" for 127.0.0.1 at 2018-10-13 09:29:27 +0200
+Processing by MyDocsController#new as HTML
+  Rendering my_docs/new.html.erb within layouts/application
+  Rendered my_doc/titles/_fields.html.erb (2.1ms)
+  Rendered my_doc/texts/_fields.html.erb (26.4ms)
+  Rendered my_docs/new.html.erb within layouts/application (32.7ms)
+Completed 200 OK in 35ms (Views: 34.5ms)
+Started POST "/my_docs" for 127.0.0.1 at 2018-10-13 09:29:27 +0200
+Processing by MyDocsController#create as HTML
+  Parameters: {"utf8"=>"✓", "my_doc"=>{"titles_attributes"=>{"1539415767272"=>{"body"=>"Foo bar"}}}, "commit"=>"Create My doc"}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.insert | STARTED | {"insert"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}, "documents"=>[{"_id"=>BSON::ObjectId('5bc19ed79313108290dd132f'), "titles"=>[{"_id"=>BSON::ObjectId('5bc19ed79313108290dd1330'...
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.insert | SUCCEEDED | 0.002s
+Redirected to http://127.0.0.1:61679/my_docs
+Completed 302 Found in 5ms
+Started GET "/my_docs" for 127.0.0.1 at 2018-10-13 09:29:27 +0200
+Processing by MyDocsController#index as HTML
+  Rendering my_docs/index.html.erb within layouts/application
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | STARTED | {"find"=>"my_docs", "filter"=>{}, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | SUCCEEDED | 0.001s
+  Rendered my_docs/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 5ms (Views: 4.8ms)
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | STARTED | {"find"=>"my_docs", "filter"=>{}, "sort"=>{"_id"=>1}, "limit"=>1, "singleBatch"=>true, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | SUCCEEDED | 0.002s
+------------------------------------------------------------------------------------------------------
+Nested Fields::capybara::items::adding and removing: test_0001_adds an item when clicking the add link
+------------------------------------------------------------------------------------------------------
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | STARTED | {"listCollections"=>1, "cursor"=>{}, "nameOnly"=>true, "filter"=>{"name"=>{"$not"=>/system\.|\$/}}, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | SUCCEEDED | 0.001s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"delete"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}, "deletes"=>[{"q"=>{}, "limit"=>0}]}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.001s
+Started GET "/my_docs/new" for 127.0.0.1 at 2018-10-13 09:29:27 +0200
+Processing by MyDocsController#new as HTML
+  Rendering my_docs/new.html.erb within layouts/application
+  Rendered my_doc/titles/_fields.html.erb (1.3ms)
+  Rendered my_doc/texts/_fields.html.erb (2.7ms)
+  Rendered my_docs/new.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 7ms (Views: 7.0ms)
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | STARTED | {"listCollections"=>1, "cursor"=>{}, "nameOnly"=>true, "filter"=>{"name"=>{"$not"=>/system\.|\$/}}, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | SUCCEEDED | 0.001s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"delete"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}, "deletes"=>[{"q"=>{}, "limit"=>0}]}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.000s
+--------------------------------------------------------------------
+SimpleFormNestedFields::NestedFieldsBuilderTest: test_0001_anonymous
+--------------------------------------------------------------------
+MONGODB | 127.0.0.1:27017 | admin.endSessions | STARTED | {"endSessions"=>[{"id"=><BSON::Binary:0x70309530898000 type=uuid data=0xb422aadec6604ed6...>}]}
+MONGODB | 127.0.0.1:27017 | admin.endSessions | SUCCEEDED | 0.001s
+---------------------------------------------------------------------------------
+Nested Fields::capybara::items::sortable: test_0001_allows to rearrange the items
+---------------------------------------------------------------------------------
+MONGODB | EVENT: #<Mongo::Monitoring::Event::TopologyOpening topology=Unknown>
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | EVENT: #<Mongo::Monitoring::Event::ServerOpening address=127.0.0.1:27017 topology=Unknown>
+MONGODB | Server 127.0.0.1:27017 initializing.
+MONGODB | EVENT: #<Mongo::Monitoring::Event::TopologyChanged prev=Unknown new=Single>
+MONGODB | Topology type 'unknown' changed to type 'single'.
+MONGODB | EVENT: #<Mongo::Monitoring::Event::ServerDescriptionChanged>
+MONGODB | Server description for 127.0.0.1:27017 changed from 'unknown' to 'standalone'.
+MONGODB | EVENT: #<Mongo::Monitoring::Event::TopologyChanged prev=Single new=Single>
+MONGODB | There was a change in the members of the 'single' topology.
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | STARTED | {"listCollections"=>1, "cursor"=>{}, "nameOnly"=>true, "filter"=>{"name"=>{"$not"=>/system\.|\$/}}, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | SUCCEEDED | 0.002s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"delete"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}, "deletes"=>[{"q"=>{}, "limit"=>0}]}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.001s
+Started GET "/my_docs/new" for 127.0.0.1 at 2018-10-13 09:29:42 +0200
+Processing by MyDocsController#new as HTML
+  Rendering my_docs/new.html.erb within layouts/application
+  Rendered my_doc/titles/_fields.html.erb (6.8ms)
+  Rendered my_doc/texts/_fields.html.erb (4.0ms)
+  Rendered my_docs/new.html.erb within layouts/application (69.6ms)
+Completed 200 OK in 284ms (Views: 281.6ms)
+Started GET "/assets/application-2c03513d35427966017b9801cd88573dd2dd004941da43a163fe9e8b214c9fdf.js" for 127.0.0.1 at 2018-10-13 09:29:42 +0200
+Started GET "/assets/application-0fbeb72ee2478a78dc9d9bb0247f4e1c4db83d71d63c132ef2c14643021b5fef.css" for 127.0.0.1 at 2018-10-13 09:29:42 +0200
+Started POST "/my_docs" for 127.0.0.1 at 2018-10-13 09:29:43 +0200
+Processing by MyDocsController#create as HTML
+  Parameters: {"utf8"=>"✓", "my_doc"=>{"texts_attributes"=>{"1539415783180"=>{"position"=>"1", "body"=>"2"}, "1539415783039"=>{"position"=>"2", "body"=>"1"}, "1539415783288"=>{"position"=>"3", "body"=>"3"}}}, "commit"=>"Create My doc"}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.insert | STARTED | {"insert"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}, "documents"=>[{"_id"=>BSON::ObjectId('5bc19ee793131082f8fa13d2'), "texts"=>[{"_id"=>BSON::ObjectId('5bc19ee793131082f8fa13cf')...
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.insert | SUCCEEDED | 0.001s
+Redirected to http://127.0.0.1:61847/my_docs
+Completed 302 Found in 7ms
+Started GET "/my_docs" for 127.0.0.1 at 2018-10-13 09:29:43 +0200
+Processing by MyDocsController#index as HTML
+  Rendering my_docs/index.html.erb within layouts/application
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | STARTED | {"find"=>"my_docs", "filter"=>{}, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | SUCCEEDED | 0.000s
+  Rendered my_docs/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 6ms (Views: 4.2ms)
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | STARTED | {"find"=>"my_docs", "filter"=>{}, "sort"=>{"_id"=>1}, "limit"=>1, "singleBatch"=>true, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | SUCCEEDED | 0.001s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | STARTED | {"listCollections"=>1, "cursor"=>{}, "nameOnly"=>true, "filter"=>{"name"=>{"$not"=>/system\.|\$/}}, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | SUCCEEDED | 0.000s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"delete"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}, "deletes"=>[{"q"=>{}, "limit"=>0}]}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.000s
+-------------------------------------------------------------------------------
+Nested Fields::capybara::items: test_0001_does not have any items to begin with
+-------------------------------------------------------------------------------
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | STARTED | {"listCollections"=>1, "cursor"=>{}, "nameOnly"=>true, "filter"=>{"name"=>{"$not"=>/system\.|\$/}}, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | SUCCEEDED | 0.001s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"delete"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}, "deletes"=>[{"q"=>{}, "limit"=>0}]}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.001s
+Started GET "/my_docs/new" for 127.0.0.1 at 2018-10-13 09:29:43 +0200
+Processing by MyDocsController#new as HTML
+  Rendering my_docs/new.html.erb within layouts/application
+  Rendered my_doc/titles/_fields.html.erb (2.6ms)
+  Rendered my_doc/texts/_fields.html.erb (4.6ms)
+  Rendered my_docs/new.html.erb within layouts/application (21.1ms)
+Completed 200 OK in 23ms (Views: 22.3ms)
+-----------------------------------
+#nested_fields: test_0001_anonymous
+-----------------------------------
+  Rendered my_doc/texts/_fields.html.erb (3.5ms)
+-----------------------------------
+#nested_fields: test_0003_anonymous
+-----------------------------------
+  Rendered my_doc/texts/_fields.html.erb (2.4ms)
+-----------------------------------
+#nested_fields: test_0002_anonymous
+-----------------------------------
+  Rendered my_doc/texts/_fields.html.erb (2.7ms)
+--------------------------------------------------------------------
+SimpleFormNestedFields::NestedFieldsBuilderTest: test_0001_anonymous
+--------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+Nested Fields::capybara::items::adding and removing: test_0001_adds an item when clicking the add link
+------------------------------------------------------------------------------------------------------
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | STARTED | {"listCollections"=>1, "cursor"=>{}, "nameOnly"=>true, "filter"=>{"name"=>{"$not"=>/system\.|\$/}}, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | SUCCEEDED | 0.000s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"delete"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}, "deletes"=>[{"q"=>{}, "limit"=>0}]}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.000s
+Started GET "/my_docs/new" for 127.0.0.1 at 2018-10-13 09:29:43 +0200
+Processing by MyDocsController#new as HTML
+  Rendering my_docs/new.html.erb within layouts/application
+  Rendered my_doc/titles/_fields.html.erb (1.3ms)
+  Rendered my_doc/texts/_fields.html.erb (2.8ms)
+  Rendered my_docs/new.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 8ms (Views: 7.7ms)
+-------------------------------------------------------------------------------------------
+Nested Fields::capybara::items::adding and removing: test_0003_allows to store the document
+-------------------------------------------------------------------------------------------
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | STARTED | {"listCollections"=>1, "cursor"=>{}, "nameOnly"=>true, "filter"=>{"name"=>{"$not"=>/system\.|\$/}}, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | SUCCEEDED | 0.000s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"delete"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}, "deletes"=>[{"q"=>{}, "limit"=>0}]}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.000s
+Started GET "/my_docs/new" for 127.0.0.1 at 2018-10-13 09:29:44 +0200
+Processing by MyDocsController#new as HTML
+  Rendering my_docs/new.html.erb within layouts/application
+  Rendered my_doc/titles/_fields.html.erb (1.6ms)
+  Rendered my_doc/texts/_fields.html.erb (2.5ms)
+  Rendered my_docs/new.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 8ms (Views: 7.7ms)
+Started POST "/my_docs" for 127.0.0.1 at 2018-10-13 09:29:44 +0200
+Processing by MyDocsController#create as HTML
+  Parameters: {"utf8"=>"✓", "my_doc"=>{"titles_attributes"=>{"1539415784121"=>{"body"=>"Foo bar"}}}, "commit"=>"Create My doc"}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.insert | STARTED | {"insert"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}, "documents"=>[{"_id"=>BSON::ObjectId('5bc19ee893131082f8fa13d3'), "titles"=>[{"_id"=>BSON::ObjectId('5bc19ee893131082f8fa13d4'...
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.insert | SUCCEEDED | 0.000s
+Redirected to http://127.0.0.1:61847/my_docs
+Completed 302 Found in 2ms
+Started GET "/my_docs" for 127.0.0.1 at 2018-10-13 09:29:44 +0200
+Processing by MyDocsController#index as HTML
+  Rendering my_docs/index.html.erb within layouts/application
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | STARTED | {"find"=>"my_docs", "filter"=>{}, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | SUCCEEDED | 0.000s
+  Rendered my_docs/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 2ms (Views: 2.3ms)
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | STARTED | {"find"=>"my_docs", "filter"=>{}, "sort"=>{"_id"=>1}, "limit"=>1, "singleBatch"=>true, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.find | SUCCEEDED | 0.000s
+------------------------------------------------------------------------------------------------------------
+Nested Fields::capybara::items::adding and removing: test_0002_removes an item when clicking the remove link
+------------------------------------------------------------------------------------------------------------
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | STARTED | {"listCollections"=>1, "cursor"=>{}, "nameOnly"=>true, "filter"=>{"name"=>{"$not"=>/system\.|\$/}}, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.listCollections | SUCCEEDED | 0.000s
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | STARTED | {"delete"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}, "deletes"=>[{"q"=>{}, "limit"=>0}]}
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.delete | SUCCEEDED | 0.000s
+Started GET "/my_docs/new" for 127.0.0.1 at 2018-10-13 09:29:44 +0200
+Processing by MyDocsController#new as HTML
+  Rendering my_docs/new.html.erb within layouts/application
+  Rendered my_doc/titles/_fields.html.erb (1.3ms)
+  Rendered my_doc/texts/_fields.html.erb (2.7ms)
+  Rendered my_docs/new.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 8ms (Views: 7.5ms)
+---------------------------------------------
+#nested_fields::sortable: test_0001_anonymous
+---------------------------------------------
+  Rendered my_doc/texts/_fields.html.erb (4.3ms)
+-----------------------------------------------
+#nested_fields::with items: test_0001_anonymous
+-----------------------------------------------
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.insert | STARTED | {"insert"=>"my_docs", "ordered"=>true, "lsid"=>{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}, "documents"=>[{"_id"=>BSON::ObjectId('5bc19ee893131082f8fa13da'), "texts"=>[{"_id"=>BSON::ObjectId('5bc19ee893131082f8fa13d5')...
+MONGODB | 127.0.0.1:27017 | simple_form_nested_fields_test.insert | SUCCEEDED | 0.001s
+  Rendered my_doc/texts/_fields.html.erb (2.2ms)
+  Rendered my_doc/texts/_fields.html.erb (5.1ms)
+  Rendered my_doc/texts/_fields.html.erb (2.2ms)
+  Rendered my_doc/texts/_fields.html.erb (2.0ms)
+  Rendered my_doc/texts/_fields.html.erb (2.5ms)
+  Rendered my_doc/texts/_fields.html.erb (3.6ms)
+MONGODB | 127.0.0.1:27017 | admin.endSessions | STARTED | {"endSessions"=>[{"id"=><BSON::Binary:0x70166426829320 type=uuid data=0x4e8a7b9a9574450d...>}]}
+MONGODB | 127.0.0.1:27017 | admin.endSessions | SUCCEEDED | 0.000s

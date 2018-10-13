@@ -1,6 +1,7 @@
 require 'simple_form'
-require 'mongoid'
-require 'jquery-rails'
+
+# TODO: Remove these somehow
+require 'rails'
 require 'rails-assets-sortablejs'
 
 require 'simple_form_nested_fields/version'
