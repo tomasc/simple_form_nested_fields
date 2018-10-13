@@ -1,4 +1,4 @@
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'simple_form_nested_fields/version'
 
@@ -19,9 +19,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'simple_form'
   spec.add_dependency 'coffee-rails'
-
-  # TODO: remove
-  spec.add_dependency 'rails-assets-sortablejs'
 
   spec.add_development_dependency 'bundler', '~> 1.12'
   spec.add_development_dependency 'capybara-screenshot'

@@ -20,7 +20,7 @@ module SimpleFormNestedFields
 
     def nested_fields_for
       dom_class = [bem_class, bem_class(m: record_name)]
-      dom_class << bem_class(m: :sortable)  if is_sortable?
+      dom_class << bem_class(m: :sortable) if is_sortable?
 
       content_tag(:div, class: dom_class) do
         concat nested_fields_title
@@ -73,7 +73,7 @@ module SimpleFormNestedFields
     end
 
     def link_to_add
-      label = options.fetch(:label_add, ::I18n.t(:add, scope: %i(simple_form_nested_fields links), model_name: relation.klass.model_name.human))
+      label = options.fetch(:label_add, ::I18n.t(:add, scope: %i[simple_form_nested_fields links], model_name: relation.klass.model_name.human))
       dom_class = [bem_class(e: :link), bem_class(e: :link, m: :add)]
       dom_data = { template: CGI.escapeHTML(nested_fields_template).html_safe, turbolinks: 'false' }
       link_to(label, '#', class: dom_class, data: dom_data).html_safe
@@ -105,7 +105,7 @@ module SimpleFormNestedFields
     end
 
     def link_to_remove(fields, options = {})
-      label = options.fetch(:label, ::I18n.t(:remove, scope: %i(simple_form_nested_fields links)))
+      label = options.fetch(:label, ::I18n.t(:remove, scope: %i[simple_form_nested_fields links]))
       dom_class = [bem_class(e: :link), bem_class(e: :link, m: :remove)]
       dom_data = { turbolinks: 'false' }
       [
@@ -116,8 +116,8 @@ module SimpleFormNestedFields
 
     def bem_class(e: nil, m: nil)
       res = [BASE_DOM_CLASS]
-      res << "__#{e.to_s}" if e.present?
-      res << "--#{m.to_s}" if m.present?
+      res << "__#{e}" if e.present?
+      res << "--#{m}" if m.present?
       res.join
     end
   end
