@@ -1,6 +1,3 @@
-#= require simple_form_nested_fields__links
-#= require simple_form_nested_fields__sortable
-
 do ($ = jQuery, window, document) ->
   pluginName = 'SimpleFormNestedFields'
   defaults =

@@ -9,7 +9,6 @@ do ($ = jQuery, window, document) ->
     constructor: (@element, options) ->
       @options = $.extend {}, defaults, options
       @_defaults = defaults
-      @_name = pluginName
       @$element = $(@element)
       @init()
 

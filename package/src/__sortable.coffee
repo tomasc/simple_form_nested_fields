@@ -1,4 +1,4 @@
-#= require sortablejs
+import Sortable from 'sortablejs'
 
 do ($ = jQuery, window, document) ->
   pluginName = 'SimpleFormNestedFields__Sortable'
