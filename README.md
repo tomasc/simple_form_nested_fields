@@ -76,9 +76,10 @@ helper:
 
 ### Sortable
 
-Making the nested fields sortable is simple. Using our `MyDoc` and `texts`
-example, the models would look like this (note the `order` on the `embeds_many`
-and the `position` field on the `Text`):
+Making the nested fields sortable is straight forward.
+
+Using our `MyDoc` and `texts` example, the models would look like this (note the
+`order` on the `embeds_many` and the `position` field on the `Text`):
 
 ```ruby
 # app/models/my_doc.rb
