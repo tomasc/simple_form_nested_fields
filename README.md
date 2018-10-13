@@ -34,6 +34,7 @@ Or install it yourself as:
 If using sprockets, require the javascript in your `application.js`:
 
 ```javascript
+//= require simple_form_nested_fields
 ```
 
 ## Usage
@@ -113,6 +114,12 @@ And in your `Text` fields partial add the position input:
 = fields.input :position, as: :hidden
 = fields.input :body
 ```
+
+### Configuration
+
+TODO
+
+* I18n
 
 ### Styling
 
