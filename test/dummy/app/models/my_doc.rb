@@ -1,3 +1,5 @@
+require 'mongoid'
+
 class MyDoc
   include Mongoid::Document
 

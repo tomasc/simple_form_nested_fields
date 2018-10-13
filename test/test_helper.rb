@@ -14,7 +14,6 @@ require 'minitest/autorun'
 require 'minitest/rails'
 require 'minitest/reporters'
 require 'minitest/spec'
-require 'minitest/spec'
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
