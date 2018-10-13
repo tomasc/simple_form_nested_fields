@@ -1,8 +1,19 @@
 # SimpleFormNestedFields
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/simple_form_nested_fields`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Build Status](https://travis-ci.org/tomasc/simple_form_nested_fields.svg)](https://travis-ci.org/tomasc/simple_form_nested_fields)
+<!-- [![Gem Version](https://badge.fury.io/rb/simple_form_nested_fields.svg)](http://badge.fury.io/rb/simple_form_nested_fields) [![Coverage Status](https://img.shields.io/coveralls/tomasc/simple_form_nested_fields.svg)](https://coveralls.io/r/tomasc/simple_form_nested_fields) -->
 
-TODO: Delete this and the text above, and describe your gem
+Nested fields helper for [`simple_form`](https://github.com/plataformatec/simple_form).
+
+Makes it easier to handle forms with referenced/embedded models and attributes;
+e.g. a document with embedded texts, a project with referenced tasks, or an
+invoice with line items.
+
+Works with standard Rails forms and SimpleForm.
+
+## Dependencies
+
+This gem depends on jQuery.
 
 ## Installation
 
@@ -20,9 +31,97 @@ Or install it yourself as:
 
     $ gem install simple_form_nested_fields
 
+If using sprockets, require the javascript in your `application.js`:
+
+```javascript
+```
+
 ## Usage
 
-TODO: Write usage instructions here
+Suppose you have a model `MyDoc`, which embeds `texts`:
+
+```ruby
+# app/models/my_doc.rb
+class MyDoc
+  include Mongoid::Document
+  embeds_many :texts, class_name: 'Text'
+  accepts_nested_attributes_for :texts, allow_destroy: true
+end
+
+# app/models/text.rb
+class Text
+  include Mongoid::Document
+  field :body, type: String
+  embedded_in :my_doc, class_name: 'MyDoc'
+end
+```
+
+You can then use the `nested_fields_for` helper to work with the texts in your
+form:
+
+```slim
+= simple_form_for @my_doc do |f|
+  = f.nested_fields_for :texts
+  = f.submit
+```
+
+This will render the `texts/_fields` partial, in which you can use the `fields`
+helper:
+
+```slim
+// app/views/texts/_fields.html.slim
+= fields.input :body
+```
+
+### Sortable
+
+Making the nested fields sortable is simple. Using our `MyDoc` and `texts`
+example, the models would look like this (note the `order` on the `embeds_many`
+and the `position` field on the `Text`):
+
+```ruby
+# app/models/my_doc.rb
+class MyDoc
+  include Mongoid::Document
+  embeds_many :texts, class_name: 'Text', order: :position.asc
+  accepts_nested_attributes_for :texts, allow_destroy: true
+end
+
+# app/models/text.rb
+class Text
+  include Mongoid::Document
+  field :body, type: String
+  field :position, type: Integer
+  embedded_in :my_doc, class_name: 'MyDoc'
+end
+```
+
+Then in your `MyDoc` form simply pass the `sortable` option to the
+`nested_fields_for` helper (note that in order to pass the option parameter, you
+have to pass the second parameter: the collection/record object):
+
+```slim
+= simple_form_for @my_doc do |f|
+  = f.nested_fields_for :texts, @my_doc.texts, sortable: true
+  = f.submit
+```
+
+And in your `Text` fields partial add the position input:
+
+```slim
+// app/views/texts/_fields.html.slim
+= fields.input :position, as: :hidden
+= fields.input :body
+```
+
+### Styling
+
+TODO
+
+## Todo
+
+* Make the sortable field automatically added
+* Make the sortable field configurable, so you can use another field
 
 ## Development
 
