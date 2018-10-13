@@ -8,7 +8,6 @@ do ($ = jQuery, window, document) ->
   class Plugin
     constructor: (@element, options) ->
       @$element = $(@element)
-      @$simple_form_nested_fields = @$element.data('plugin_SimpleFormNestedFields')
       @settings = $.extend {}, defaults, options
       @_defaults = defaults
       @_name = pluginName

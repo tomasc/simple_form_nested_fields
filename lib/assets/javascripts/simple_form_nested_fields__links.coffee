@@ -3,7 +3,7 @@ do ($ = jQuery, window, document) ->
   defaults =
     debug: false
     new_item_class_name: 'simple_form_nested_fields__item--new'
-    regexp: new RegExp("__INDEX_PLACEHOLDER__", 'g') # regexp: new RegExp("<%= Modulor::NestedFieldsBuilder::CHILD_INDEX_STRING %>", 'g')
+    regexp: new RegExp("__INDEX_PLACEHOLDER__", 'g')
 
   class Plugin
     constructor: (@element, options) ->
