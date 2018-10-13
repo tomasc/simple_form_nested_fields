@@ -1,5 +1,5 @@
 <%= simple_form_for @my_doc do |f| %>
-  <%= f.nested_fields_for :titles %>
+  <%= f.nested_fields_for :titles, nil, partial: 'my_doc/titles/fields' %>
   <hr>
   <%= f.nested_fields_for :texts, nil, sortable: true %>
   <hr>

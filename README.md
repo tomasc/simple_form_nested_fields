@@ -79,7 +79,7 @@ This will render the `texts/_fields` partial, in which you can use the `fields`
 helper:
 
 ```slim
-// app/views/texts/_fields.html.slim
+// app/views/my_docs/texts/_fields.html.slim
 = fields.input :body
 ```
 
@@ -120,16 +120,26 @@ have to pass the second parameter: the collection/record object):
 And in your `Text` fields partial add the position input:
 
 ```slim
-// app/views/texts/_fields.html.slim
+// app/views/my_docs/texts/_fields.html.slim
 = fields.input :position, as: :hidden
 = fields.input :body
 ```
 
 ### Configuration
 
-TODO
+#### Custom partial path
 
-* I18n
+You can override the default `_fields` partial lookup path as follows:
+
+```slim
+= simple_form_for @my_doc do |f|
+  = f.nested_fields_for :texts, nil, partial: 'my/own/path/to/fields'
+  = f.submit
+```
+
+#### I18n
+
+* TODO
 
 ### Styling
 

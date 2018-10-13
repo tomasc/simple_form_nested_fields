@@ -112,7 +112,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   pluginName = 'SimpleFormNestedFields__Links';
   defaults = {
     debug: false,
-    new_item_class_name: 'simple_form_nested_fields__item--new',
+    new_item_class_name: 'simple_form_nested_fields__item__new',
     regexp: new RegExp("__INDEX_PLACEHOLDER__", 'g') // regexp: new RegExp("<%= Modulor::NestedFieldsBuilder::CHILD_INDEX_STRING %>", 'g')
   };
   Plugin = function () {
@@ -136,9 +136,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           e.preventDefault();
           link = e.target;
           switch (false) {
-            case !link.classList.contains('simple_form_nested_fields__link--add'):
+            case !link.classList.contains('simple_form_nested_fields__link__add'):
               return _this.add_new_item(link);
-            case !link.classList.contains('simple_form_nested_fields__link--remove'):
+            case !link.classList.contains('simple_form_nested_fields__link__remove'):
               return _this.remove_item(link);
           }
         });
@@ -146,7 +146,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'destroy',
       value: function destroy() {
-        return this.$element.off('click.' + this._name, '.simple_form_nested_fields__link-add');
+        return this.$element.off('click.' + this._name, '.simple_form_nested_fields__link__add');
       }
     }, {
       key: 'get_index',
@@ -1901,7 +1901,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'is_sortable',
       value: function is_sortable() {
-        return this.element.classList.contains('simple_form_nested_fields--sortable');
+        return this.element.classList.contains('simple_form_nested_fields__sortable');
       }
     }]);
 

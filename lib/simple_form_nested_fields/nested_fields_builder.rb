@@ -36,7 +36,7 @@ module SimpleFormNestedFields
     end
 
     def partial_path
-      File.join(object.model_name.collection, relation.klass.model_name.collection, 'fields')
+      options.fetch(:partial, File.join(object.model_name.collection, relation.klass.model_name.collection, 'fields'))
     end
 
     def relation
