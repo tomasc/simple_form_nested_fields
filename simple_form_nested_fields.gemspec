@@ -18,9 +18,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'simple_form'
-  spec.add_dependency 'mongoid'
   spec.add_dependency 'coffee-rails'
-  spec.add_dependency 'jquery-rails'
+
+  # TODO: remove
   spec.add_dependency 'rails-assets-sortablejs'
 
   spec.add_development_dependency 'bundler', '~> 1.12'
@@ -28,12 +28,14 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'capybara', '~> 2.1'
   spec.add_development_dependency 'database_cleaner'
   spec.add_development_dependency 'guard-minitest'
-  spec.add_development_dependency 'minitest-around'
   spec.add_development_dependency 'guard'
+  spec.add_development_dependency 'jquery-rails'
+  spec.add_development_dependency 'minitest-around'
   spec.add_development_dependency 'minitest-metadata'
   spec.add_development_dependency 'minitest-rails-capybara'
   spec.add_development_dependency 'minitest-reporters'
   spec.add_development_dependency 'minitest', '~> 5.0'
+  spec.add_development_dependency 'mongoid'
   spec.add_development_dependency 'rails'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'selenium-webdriver'
