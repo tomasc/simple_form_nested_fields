@@ -157,16 +157,16 @@ The gem has no default styling, but leaves that up to you.
 For reference, here's an example markup:
 
 ```html
-<div class="simple_form_nested_fields simple_form_nested_fields--texts">
+<div class="simple_form_nested_fields simple_form_nested_fields__texts">
   <div class="simple_form_nested_fields__title">Texts</div>
   <div class="simple_form_nested_fields__items">
-    <div class="simple_form_nested_fields__item simple_form_nested_fields__item--new">
-      <!-- fields -->
-      <a class="simple_form_nested_fields__link simple_form_nested_fields__link--remove">Remove</a>
+    <div class="simple_form_nested_fields__item simple_form_nested_fields__item__new">
+      <!-- input fields here -->
+      <a class="simple_form_nested_fields__link simple_form_nested_fields__link__remove">Remove</a>
     </div>
   </div>
   <div class="simple_form_nested_fields__links">
-    <a class="simple_form_nested_fields__link simple_form_nested_fields__link--add">Add Title</a>
+    <a class="simple_form_nested_fields__link simple_form_nested_fields__link__add">Add Title</a>
   </div>
 </div>
 ```
