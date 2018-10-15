@@ -44,7 +44,6 @@ module SimpleFormNestedFields
     end
 
     def nested_fields_title
-      # dom_class = Bem.bem(:modulor_nested_fields, :title)
       dom_class = bem_class(e: :title)
       title = relation.klass.model_name.human.pluralize
       content_tag(:div, title, class: dom_class).html_safe
@@ -66,7 +65,6 @@ module SimpleFormNestedFields
     end
 
     def nested_fields_links
-      # dom_class = 'simple_form_nested_fields__links'
       dom_class = bem_class(e: :links)
       content_tag(:div, link_to_add, class: dom_class).html_safe
     end
@@ -80,7 +78,6 @@ module SimpleFormNestedFields
 
     def nested_fields_item_handle
       return unless is_sortable?
-      # dom_class = 'simple_form_nested_fields__item_handle'
       dom_class = bem_class(e: :item_handle)
       content_tag(:div, nil, class: dom_class).html_safe
     end
