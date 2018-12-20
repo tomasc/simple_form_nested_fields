@@ -111,10 +111,7 @@ module SimpleFormNestedFields
     end
 
     def bem_class(e: nil, m: nil)
-      res = [BASE_DOM_CLASS]
-      res << "__#{e}" if e.present?
-      res << "__#{m}" if m.present?
-      res.join
+      SimpleFormNestedFields::Bem.new(b: BASE_DOM_CLASS, e: e, m: m).to_s
     end
   end
 end

@@ -19,7 +19,7 @@ do ($ = jQuery, window, document) ->
       @$element.data('plugin_SimpleFormNestedFields__Links').destroy()
       @$element.data('plugin_SimpleFormNestedFields__Sortable').destroy()
 
-    is_sortable: -> @element.classList.contains('simple_form_nested_fields__sortable')
+    is_sortable: -> @element.classList.contains('simple_form_nested_fields--sortable')
 
   # A really lightweight plugin wrapper around the constructor,
   # preventing against multiple instantiations
