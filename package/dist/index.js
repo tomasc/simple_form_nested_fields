@@ -246,7 +246,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.sortable = new _sortablejs2.default(this.get_items_container()[0], {
           animation: 150,
           draggable: '.simple_form_nested_fields__item',
-          ghostClass: 'simple_form_nested_fields__item--ghost',
+          ghostClass: 'simple_form_nested_fields__item_ghost',
           handle: '.simple_form_nested_fields__item_handle',
           // TODO: onAdd is not being triggered?
           onAdd: function onAdd(e) {

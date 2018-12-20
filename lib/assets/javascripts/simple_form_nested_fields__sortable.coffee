@@ -22,7 +22,7 @@ do ($ = jQuery, window, document) ->
 
         animation: 150,
         draggable: '.simple_form_nested_fields__item',
-        ghostClass: 'simple_form_nested_fields__item--ghost',
+        ghostClass: 'simple_form_nested_fields__item_ghost',
         handle: '.simple_form_nested_fields__item_handle',
 
         # TODO: onAdd is not being triggered?
