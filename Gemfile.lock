@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    simple_form_nested_fields (0.1.0)
+    simple_form_nested_fields (0.2.0)
       coffee-rails
       simple_form
 
@@ -198,7 +198,7 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     shellany (0.0.1)
-    simple_form (4.0.1)
+    simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     sprockets (3.7.2)
