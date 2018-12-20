@@ -247,7 +247,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           animation: 150,
           draggable: '.simple_form_nested_fields__item',
           ghostClass: 'simple_form_nested_fields__item--ghost',
-          handle: '.simple_form_nested_fields__item--handle',
+          handle: '.simple_form_nested_fields__item_handle',
           // TODO: onAdd is not being triggered?
           onAdd: function onAdd(e) {
             return _this.update_item_positions();

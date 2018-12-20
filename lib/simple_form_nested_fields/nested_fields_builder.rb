@@ -78,7 +78,7 @@ module SimpleFormNestedFields
 
     def nested_fields_item_handle
       return unless is_sortable?
-      dom_class = bem_class(e: :item, m: :handle)
+      dom_class = bem_class(e: :item_handle)
       content_tag(:div, nil, class: dom_class).html_safe
     end
 
