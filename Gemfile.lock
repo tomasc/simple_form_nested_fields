@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    simple_form_nested_fields (0.2.0)
+    simple_form_nested_fields (0.2.1)
       coffee-rails
       simple_form
 
