@@ -19,7 +19,7 @@ module SimpleFormNestedFields
     def_delegators :template, :concat, :content_tag, :hidden_field_tag, :link_to, :render
 
     def nested_fields_for
-      dom_class = [bem_class, bem_class(m: record_name)]
+      dom_class = bem_class(m: record_name)
       dom_class << bem_class(m: :sortable) if is_sortable?
 
       content_tag(:div, class: dom_class) do
