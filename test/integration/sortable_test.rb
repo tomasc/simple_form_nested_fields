@@ -3,9 +3,9 @@ require 'test_helper'
 describe SimpleFormNestedFields, :capybara do
   include Selectors
 
-  before do
-    visit new_my_doc_path
+  before { visit new_my_doc_path }
 
+  it 'allows to rearrange the items', js: true do
     (1..3).each do |index|
       within(:css, '.simple_form_nested_fields--texts') do
         add_item
@@ -15,9 +15,7 @@ describe SimpleFormNestedFields, :capybara do
         end
       end
     end
-  end
 
-  it 'allows to rearrange the items', js: true do
     page.execute_script <<-EOS
       var drag_source = document.querySelector('.simple_form_nested_fields__item:nth-child(1) .simple_form_nested_fields__item_handle');
       var drop_target = document.querySelector('.simple_form_nested_fields__item:nth-child(3)');
