@@ -1,6 +1,8 @@
 require 'test_helper'
 
 describe SimpleFormNestedFields, :capybara do
+  include Selectors
+
   before do
     visit new_my_doc_path
 
@@ -29,19 +31,5 @@ describe SimpleFormNestedFields, :capybara do
 
     # dragMock, for some reason, makes this result instead of 2 3 1
     MyDoc.first.texts.map(&:body).must_equal %w[2 1 3]
-  end
-
-  private
-
-  def add_item
-    find(:css, '.simple_form_nested_fields__link--add').click
-  end
-
-  def remove_item
-    find(:css, '.simple_form_nested_fields__link--remove').click
-  end
-
-  def submit_form
-    find(:css, 'input[type="submit"]').click
   end
 end

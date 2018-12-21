@@ -1,6 +1,8 @@
 require 'test_helper'
 
 describe SimpleFormNestedFields, :capybara do
+  include Selectors
+
   let(:body) { 'Foo bar' }
 
   before do
@@ -25,19 +27,5 @@ describe SimpleFormNestedFields, :capybara do
     end
 
     it(nil, js: true) { MyDoc.first.titles.first.body.must_equal body }
-  end
-
-  private
-
-  def add_item
-    find(:css, '.simple_form_nested_fields__link--add').click
-  end
-
-  def remove_item
-    find(:css, '.simple_form_nested_fields__link--remove').click
-  end
-
-  def submit_form
-    find(:css, 'input[type="submit"]').click
   end
 end
