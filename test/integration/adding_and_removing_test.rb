@@ -5,27 +5,31 @@ describe SimpleFormNestedFields, :capybara do
 
   let(:body) { 'Foo bar' }
 
-  before do
-    visit new_my_doc_path
-    within(:css, '.simple_form_nested_fields--titles') { add_item }
+  before { visit new_my_doc_path }
+
+  it 'allows to add an item', js: true do
+    within(:css, '.simple_form_nested_fields--titles') do
+      add_item
+      page.must_have_selector '.simple_form_nested_fields__item--new'
+    end
   end
 
-  it(nil, js: true) { page.must_have_selector '.simple_form_nested_fields__item--new' }
-
-  describe 'removes an item when clicking the remove link' do
-    before do
+  it 'allows to remove an item', js: true do
+    within(:css, '.simple_form_nested_fields--titles') do
+      add_item
+      page.must_have_selector '.simple_form_nested_fields__item--new'
       remove_item
+      page.wont_have_selector '.simple_form_nested_fields__item--new'
     end
-
-    it(nil, js: true) { page.wont_have_selector '.simple_form_nested_fields__item--new' }
   end
 
-  describe 'allows to store the document' do
-    before do
+  it 'persists added item', js: true do
+    within(:css, '.simple_form_nested_fields--titles') do
+      add_item
       fill_in('Body', with: body)
-      submit_form
     end
+    submit_form
 
-    it(nil, js: true) { MyDoc.first.titles.first.body.must_equal body }
+    MyDoc.first.titles.first.body.must_equal body
   end
 end
