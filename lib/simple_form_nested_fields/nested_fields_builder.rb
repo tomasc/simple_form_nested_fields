@@ -16,13 +16,17 @@ module SimpleFormNestedFields
     end
 
     def_delegators :builder, :object, :object_name, :simple_fields_for
-    def_delegators :template, :concat, :content_tag, :hidden_field_tag, :link_to, :render
+    def_delegators :template, :concat, :content_tag, :hidden_field_tag, :select_tag, :options_for_select, :link_to, :render
 
     def nested_fields_for
       content_tag(:div, class: wrapper_class) do
         concat nested_fields_title
         concat nested_fields_items
         concat nested_fields_links
+
+        item_classes.each do |cls|
+          concat nested_fields_template(cls)
+        end
       end
     end
 
@@ -34,11 +38,24 @@ module SimpleFormNestedFields
     end
 
     def is_sortable?
-      options[:sortable] == true
+      options.fetch(:sortable, false)
     end
 
-    def partial_path
-      options.fetch(:partial, File.join(object.model_name.collection, relation.klass.model_name.collection, 'fields'))
+    def multiple_item_classes?
+      item_classes.length > 1
+    end
+
+    def item_classes
+      options.fetch(:item_classes) do
+        return relation.klass.descendants if relation.klass.descendants.present?
+        [relation.klass]
+      end
+    end
+
+    def partial_path(cls)
+      options.fetch(:partial) do
+        File.join(object.model_name.collection, cls.model_name.collection, 'fields')
+      end
     end
 
     def relation
@@ -54,12 +71,14 @@ module SimpleFormNestedFields
     def nested_fields_items
       content_tag(:div, class: bem_class(e: :items)) do
         simple_fields_for(record_name, record_object, options) do |fields|
-          dom_class = bem_class(e: :item, m: relation.klass)
-          dom_data = { id: fields.object.id.to_s }
+          dom_class = bem_class(e: :item)
+          dom_data = { id: fields.object.id.to_s, class: fields.object.class.to_s }
 
           content_tag(:div, class: dom_class, data: dom_data) do
             concat nested_fields_item_handle
-            concat render(partial_path, fields: fields)
+            concat nested_fields__type_input(fields)
+            concat nested_fields_position_input(fields)
+            concat render(partial_path(fields.object.class), fields: fields)
             concat link_to_remove(fields)
           end
         end
@@ -68,13 +87,23 @@ module SimpleFormNestedFields
 
     def nested_fields_links
       dom_class = bem_class(e: :links)
-      content_tag(:div, link_to_add, class: dom_class).html_safe
+      content_tag(:div, class: dom_class) do
+        concat select_for_add
+        concat link_to_add
+      end.html_safe
+    end
+
+    def select_for_add
+      dom_class = [bem_class(e: :select), bem_class(e: :select, m: :add)]
+      dom_style = ""
+      dom_style = "display: none;" unless multiple_item_classes?
+      select_tag nil, options_for_select(item_classes.map { |kls| [kls.name, kls.to_s] }), class: dom_class, style: dom_style
     end
 
     def link_to_add
       label = options.fetch(:label_add, ::I18n.t(:add, scope: %i[simple_form_nested_fields links], model_name: relation.klass.model_name.human))
       dom_class = [bem_class(e: :link), bem_class(e: :link, m: :add)]
-      dom_data = { template: CGI.escapeHTML(nested_fields_template).html_safe, turbolinks: 'false' }
+      dom_data = { turbolinks: 'false' }
       link_to(label, '#', class: dom_class, data: dom_data).html_safe
     end
 
@@ -84,17 +113,28 @@ module SimpleFormNestedFields
       content_tag(:div, nil, class: dom_class).html_safe
     end
 
-    def nested_fields_template
-      dom_class = bem_class(e: :item, m: relation.klass)
-      content_tag :div, nested_fields_template_string, class: dom_class
+    def nested_fields_position_input(fields)
+      return unless is_sortable?
+      fields.input(:position, as: :hidden).html_safe
     end
 
-    def nested_fields_template_string
-      simple_fields_for(record_name, relation.klass.new, child_index: CHILD_INDEX_STRING) do |fields|
-        nested_fields_item_handle.to_s.html_safe +
-          render(partial_path, fields: fields).html_safe +
-          link_to_remove(fields)
-      end.html_safe
+    def nested_fields__type_input(fields)
+      return unless fields.object.respond_to?(:_type)
+      fields.input(:_type, as: :hidden).html_safe
+    end
+
+    def nested_fields_template(cls)
+      content_tag :template, data: { class: cls.to_s } do
+        content_tag :div, class: bem_class(e: :item), data: { class: cls.to_s } do
+          simple_fields_for(record_name, cls.new, child_index: CHILD_INDEX_STRING) do |fields|
+            concat nested_fields_item_handle
+            concat nested_fields__type_input(fields)
+            concat nested_fields_position_input(fields)
+            concat render(partial_path(cls), fields: fields)
+            concat link_to_remove(fields)
+          end
+        end
+      end
     end
 
     def destroy_field_tag(fields)

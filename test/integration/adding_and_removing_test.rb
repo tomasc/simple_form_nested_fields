@@ -1,7 +1,7 @@
 require 'test_helper'
 
 describe SimpleFormNestedFields, :capybara do
-  include Selectors
+  include Actions
 
   let(:body) { 'Foo bar' }
 
@@ -18,6 +18,7 @@ describe SimpleFormNestedFields, :capybara do
     within(:css, '.simple_form_nested_fields--titles') do
       add_item
       page.must_have_selector '.simple_form_nested_fields__item--new'
+
       remove_item
       page.wont_have_selector '.simple_form_nested_fields__item--new'
     end

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 describe SimpleFormNestedFields, :capybara do
-  include Selectors
+  include Actions
 
   before { visit new_my_doc_path }
 

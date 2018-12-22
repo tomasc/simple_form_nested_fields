@@ -1,7 +1,4 @@
-<%= simple_form_for @my_doc do |f| %>
-  <%= f.nested_fields_for :titles, nil, partial: 'my_doc/titles/fields' %>
-  <hr>
-  <%= f.nested_fields_for :texts, nil, sortable: true %>
-  <hr>
-  <%= f.submit %>
+<%= simple_form_for @my_doc do |form| %>
+  <%= render 'my_docs/form', form: form %>
+  <%= form.submit %>
 <% end %>

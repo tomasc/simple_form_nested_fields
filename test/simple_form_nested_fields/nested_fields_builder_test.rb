@@ -33,7 +33,8 @@ class SimpleFormNestedFields::NestedFieldsBuilderTest < ActionView::TestCase
         my_doc.save!
       end
 
-      it { nested_fields.scan(/simple_form_nested_fields__item\"/).length.must_equal 5 }
+      # 1 extra accounts for template
+      it { nested_fields.scan(/simple_form_nested_fields__item\"/).length.must_equal 5 + 1 }
     end
   end
 end

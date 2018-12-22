@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Unreleased
+
+* added support for inheritance and multiple item types (configurable via the `item_classes` option)
+* with subclasses, the `_type` hidden field is inserted automatically
+* when sortable, the `position` hidden field is inserted automatically
+
 ## 0.2.1
 
 * [PR#3](https://github.com/tomasc/simple_form_nested_fields/pull/3) fix duplicate dom classes

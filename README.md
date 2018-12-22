@@ -83,6 +83,19 @@ helper:
 = fields.input :body
 ```
 
+### Inheritance
+
+Subclassing of the relation class is handled automatically by default with:
+
+* partials corresponding to each subclass
+* select input next to the add link that allows the user choose the subclass to be added
+
+The choice of classes can be configured as follows:
+
+```slim
+= f.nested_fields_for :variants, nil, item_classes: [MyDoc::Variant::One, MyDoc::Variant::Two]
+```
+
 ### Sortable
 
 Making the nested fields sortable is straight forward.
@@ -117,13 +130,7 @@ have to pass the second parameter: the collection/record object):
   = f.submit
 ```
 
-And in your `Text` fields partial add the position input:
-
-```slim
-// app/views/my_docs/texts/_fields.html.slim
-= fields.input :position, as: :hidden
-= fields.input :body
-```
+Please note the `position` input is automatically added to the partial.
 
 ### Configuration
 
