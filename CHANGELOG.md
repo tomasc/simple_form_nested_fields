@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Unreleased
+## 0.3.0
 
 * added support for inheritance and multiple item types (configurable via the `item_classes` option)
 * with subclasses, the `_type` hidden field is inserted automatically
