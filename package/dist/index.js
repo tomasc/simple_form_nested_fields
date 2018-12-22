@@ -154,14 +154,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return new Date().getTime();
       }
     }, {
-      key: 'get_template',
-      value: function get_template(link) {
-        return $(link).data('template').replace(this.options.regexp, this.get_index());
+      key: 'get_item_class_name',
+      value: function get_item_class_name() {
+        return this.get_select().val();
       }
     }, {
       key: 'get_items_container',
       value: function get_items_container() {
         return this.$element.find('.simple_form_nested_fields__items');
+      }
+    }, {
+      key: 'get_template',
+      value: function get_template(link) {
+        var $template, item_class_name;
+        item_class_name = this.get_item_class_name();
+        $template = this.$element.find('template[data-class=\'' + item_class_name + '\']').first();
+        return $template.html().replace(this.options.regexp, this.get_index());
+      }
+    }, {
+      key: 'get_select',
+      value: function get_select() {
+        return this.$element.find('.simple_form_nested_fields__select--add');
       }
     }, {
       key: 'add_new_item',

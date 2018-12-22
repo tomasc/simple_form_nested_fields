@@ -24,8 +24,13 @@ do ($ = jQuery, window, document) ->
       @$element.off "click.#{@_name}", '.simple_form_nested_fields__link--add'
 
     get_index: -> new Date().getTime()
-    get_template: (link) -> $(link).data('template').replace(@options.regexp, @get_index())
+    get_item_class_name: -> @get_select().val()
     get_items_container: -> @$element.find('.simple_form_nested_fields__items')
+    get_template: (link) ->
+      item_class_name = @get_item_class_name()
+      $template = @$element.find("template[data-class='#{item_class_name}']").first()
+      $template.html().replace(@options.regexp, @get_index())
+    get_select: -> @$element.find('.simple_form_nested_fields__select--add')
 
     add_new_item: (link) ->
       $template = $(@get_template(link))
