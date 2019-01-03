@@ -5,7 +5,7 @@ import SortableFields from './__sortable_fields'
 
 export default class SimpleFormNestedFields extends Plugin
   @defaults =
-    name: 'SimpleFormNestedFields'
+    name: 'simple_form_nested_fields'
     debug: false
 
   init: ->

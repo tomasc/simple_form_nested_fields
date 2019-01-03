@@ -255,7 +255,7 @@ exports.default = SimpleFormNestedFields = function () {
   ;
 
   SimpleFormNestedFields.defaults = {
-    name: 'SimpleFormNestedFields',
+    name: 'simple_form_nested_fields',
     debug: false
   };
 
