@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -81,72 +81,245 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__links__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__links___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__links__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sortable__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sortable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__sortable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__simple_form_nested_fields__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__simple_form_nested_fields___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__simple_form_nested_fields__);
-
-
-
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(jQuery) {
+/* WEBPACK VAR INJECTION */(function($) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-(function ($, window, document) {
-  var Plugin, defaults, pluginName;
-  pluginName = 'SimpleFormNestedFields__Links';
-  defaults = {
-    debug: false,
-    new_item_class_name: 'simple_form_nested_fields__item--new',
-    regexp: new RegExp("__INDEX_PLACEHOLDER__", 'g') // regexp: new RegExp("<%= Modulor::NestedFieldsBuilder::CHILD_INDEX_STRING %>", 'g')
-  };
-  Plugin = function () {
-    function Plugin(element, options) {
-      _classCallCheck(this, Plugin);
+var Plugin;
 
-      this.element = element;
-      this.options = $.extend({}, defaults, options);
-      this._defaults = defaults;
-      this.$element = $(this.element);
-      this.init();
+exports.default = Plugin = function () {
+  _createClass(Plugin, null, [{
+    key: "register",
+    value: function register() {
+      var defaults, klass, name, options, ref, ref1, selector;
+      klass = this;
+      defaults = (ref = this.defaults) != null ? ref : {};
+      name = defaults.name || (defaults.name = /function ([^(]*)/.exec(klass + "")[1]);
+      options = Array.prototype.slice.call(arguments).slice(1);
+      selector = (ref1 = arguments[0]) != null ? ref1 : klass.selector;
+      return this.init_plugin(klass, name);
+    }
+  }, {
+    key: "init_plugin",
+    value: function init_plugin(klass, name) {
+      if ($.fn[name] !== void 0) {
+        return;
+      }
+      return $.fn[name] = function (options) {
+        var args, dataKey, returns;
+        args = arguments;
+        dataKey = "plugin_" + name;
+        if (options === undefined || (typeof options === "undefined" ? "undefined" : _typeof(options)) === "object") {
+          return this.each(function () {
+            var instance;
+            this.pluginInstances || (this.pluginInstances = {});
+            if (!this.pluginInstances[dataKey]) {
+              instance = new klass(this, options);
+              return this.pluginInstances[dataKey] = instance;
+            }
+          });
+        } else if (typeof options === 'string' && options[0] !== '_' && options !== 'init') {
+          returns = void 0;
+          this.each(function () {
+            var instance;
+            this.pluginInstances || (this.pluginInstances = {});
+            instance = this.pluginInstances[dataKey];
+            if (instance instanceof klass && typeof instance[options] === 'function') {
+              returns = instance[options].apply(instance, Array.prototype.slice.call(args, 1));
+            }
+            if (options === 'destroy') {
+              return this.pluginInstances[dataKey] = null;
+            }
+          });
+          if (returns !== undefined) {
+            return returns;
+          } else {
+            return this;
+          }
+        }
+      };
+    }
+  }]);
+
+  function Plugin(element, options) {
+    _classCallCheck(this, Plugin);
+
+    this.element = element;
+    this.options = $.extend({}, this.constructor.defaults, options);
+    this.$element = $(this.element);
+    this.init();
+  }
+
+  return Plugin;
+}();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__simple_form_nested_fields__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__simple_form_nested_fields___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__simple_form_nested_fields__);
+
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__simple_form_nested_fields___default.a);
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _plugin = __webpack_require__(1);
+
+var _plugin2 = _interopRequireDefault(_plugin);
+
+var _links = __webpack_require__(4);
+
+var _links2 = _interopRequireDefault(_links);
+
+var _sortable_fields = __webpack_require__(5);
+
+var _sortable_fields2 = _interopRequireDefault(_sortable_fields);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SimpleFormNestedFields;
+
+exports.default = SimpleFormNestedFields = function () {
+  var SimpleFormNestedFields = function (_Plugin) {
+    _inherits(SimpleFormNestedFields, _Plugin);
+
+    function SimpleFormNestedFields() {
+      _classCallCheck(this, SimpleFormNestedFields);
+
+      return _possibleConstructorReturn(this, (SimpleFormNestedFields.__proto__ || Object.getPrototypeOf(SimpleFormNestedFields)).apply(this, arguments));
     }
 
-    _createClass(Plugin, [{
+    _createClass(SimpleFormNestedFields, [{
       key: 'init',
       value: function init() {
-        var _this = this;
+        this.Links = new _links2.default(this.element);
+        if (this.is_sortable()) {
+          return this.SortableFields = new _sortable_fields2.default(this.element);
+        }
+      }
+    }, {
+      key: 'destroy',
+      value: function destroy() {
+        if (this.Links) {
+          this.Links.destroy();
+        }
+        this.Links = void 0;
+        if (this.SortableFields) {
+          this.SortableFields.destroy();
+        }
+        return this.SortableFields = void 0;
+      }
+    }, {
+      key: 'is_sortable',
+      value: function is_sortable() {
+        return this.element.classList.contains('simple_form_nested_fields--sortable');
+      }
+    }]);
 
-        return this.$element.on('click.' + this._name, '.simple_form_nested_fields__link', function (e) {
+    return SimpleFormNestedFields;
+  }(_plugin2.default);
+
+  ;
+
+  SimpleFormNestedFields.defaults = {
+    name: 'SimpleFormNestedFields',
+    debug: false
+  };
+
+  return SimpleFormNestedFields;
+}.call(undefined);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _plugin = __webpack_require__(1);
+
+var _plugin2 = _interopRequireDefault(_plugin);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Links;
+
+exports.default = Links = function () {
+  var Links = function (_Plugin) {
+    _inherits(Links, _Plugin);
+
+    function Links() {
+      _classCallCheck(this, Links);
+
+      return _possibleConstructorReturn(this, (Links.__proto__ || Object.getPrototypeOf(Links)).apply(this, arguments));
+    }
+
+    _createClass(Links, [{
+      key: 'init',
+      value: function init() {
+        var _this2 = this;
+
+        return this.$element.on("click.SimpleFormNestedFields__Links", '.simple_form_nested_fields__link', function (e) {
           var link;
           e.preventDefault();
           link = e.target;
           switch (false) {
             case !link.classList.contains('simple_form_nested_fields__link--add'):
-              return _this.add_new_item(link);
+              return _this2.add_new_item(link);
             case !link.classList.contains('simple_form_nested_fields__link--remove'):
-              return _this.remove_item(link);
+              return _this2.remove_item(link);
           }
         });
       }
     }, {
       key: 'destroy',
       value: function destroy() {
-        return this.$element.off('click.' + this._name, '.simple_form_nested_fields__link--add');
+        return this.$element.off('.SimpleFormNestedFields__Links');
       }
     }, {
       key: 'get_index',
@@ -198,30 +371,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }]);
 
-    return Plugin;
-  }();
-  // A really lightweight plugin wrapper around the constructor,
-  // preventing against multiple instantiations
-  return $.fn[pluginName] = function (options) {
-    return this.each(function () {
-      if (!$.data(this, 'plugin_' + pluginName)) {
-        return $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
-      }
-    });
+    return Links;
+  }(_plugin2.default);
+
+  ;
+
+  Links.defaults = {
+    name: 'SimpleFormNestedFields__Links',
+    debug: false,
+    new_item_class_name: 'simple_form_nested_fields__item--new',
+    regexp: new RegExp("__INDEX_PLACEHOLDER__", 'g') // regexp: new RegExp("<%= Modulor::NestedFieldsBuilder::CHILD_INDEX_STRING %>", 'g')
   };
-})(jQuery, window, document);
+
+  return Links;
+}.call(undefined);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(jQuery) {
+/* WEBPACK VAR INJECTION */(function($) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _sortablejs = __webpack_require__(4);
+var _sortablejs = __webpack_require__(6);
 
 var _sortablejs2 = _interopRequireDefault(_sortablejs);
 
@@ -229,29 +408,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-(function ($, window, document) {
-  var Plugin, defaults, pluginName;
-  pluginName = 'SimpleFormNestedFields__Sortable';
-  defaults = {
-    debug: false
-  };
-  Plugin = function () {
-    function Plugin(element, options) {
-      _classCallCheck(this, Plugin);
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-      this.element = element;
-      this.$element = $(this.element);
-      this.$simple_form_nested_fields = this.$element.data('plugin_SimpleFormNestedFields');
-      this.options = $.extend({}, defaults, options);
-      this._defaults = defaults;
-      this._name = pluginName;
-      this.init();
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SortableFields;
+
+exports.default = SortableFields = function () {
+  var SortableFields = function (_Plugin) {
+    _inherits(SortableFields, _Plugin);
+
+    function SortableFields() {
+      _classCallCheck(this, SortableFields);
+
+      return _possibleConstructorReturn(this, (SortableFields.__proto__ || Object.getPrototypeOf(SortableFields)).apply(this, arguments));
     }
 
-    _createClass(Plugin, [{
+    _createClass(SortableFields, [{
       key: 'init',
       value: function init() {
-        var _this = this;
+        var _this2 = this;
 
         if (this.sortable) {
           return;
@@ -263,24 +439,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           handle: '.simple_form_nested_fields__item_handle',
           // TODO: onAdd is not being triggered?
           onAdd: function onAdd(e) {
-            return _this.update_item_positions();
+            return _this2.update_item_positions();
           },
           onUpdate: function onUpdate(e) {
-            return _this.update_item_positions();
+            return _this2.update_item_positions();
           },
           onRemove: function onRemove(e) {
-            return _this.update_item_positions();
+            return _this2.update_item_positions();
           }
         });
-        this.$element.on('update_item_positions.' + this._name, function (e) {
+        this.$element.on("update_item_positions.SimpleFormNestedFields__SortableFields", function (e) {
           e.stopPropagation();
-          return _this.update_item_positions();
+          return _this2.update_item_positions();
         });
         return this.update_item_positions();
       }
     }, {
       key: 'destroy',
       value: function destroy() {
+        this.$element.off('.SimpleFormNestedFields__SortableFields');
         if (this.sortable) {
           return this.sortable.destroy();
         }
@@ -304,22 +481,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }]);
 
-    return Plugin;
-  }();
-  // A really lightweight plugin wrapper around the constructor,
-  // preventing against multiple instantiations
-  return $.fn[pluginName] = function (options) {
-    return this.each(function () {
-      if (!$.data(this, 'plugin_' + pluginName)) {
-        return $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
-      }
-    });
+    return SortableFields;
+  }(Plugin);
+
+  ;
+
+  SortableFields.defaults = {
+    name: 'SimpleFormNestedFields__SortableFields',
+    debug: false
   };
-})(jQuery, window, document);
+
+  return SortableFields;
+}.call(undefined);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**!
@@ -1867,70 +2044,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**!
 	return Sortable;
 });
 
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(jQuery) {
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-(function ($, window, document) {
-  var Plugin, defaults, pluginName;
-  pluginName = 'SimpleFormNestedFields';
-  defaults = {
-    debug: false
-  };
-  Plugin = function () {
-    function Plugin(element, options) {
-      _classCallCheck(this, Plugin);
-
-      this.element = element;
-      this.options = $.extend({}, defaults, options);
-      this._defaults = defaults;
-      this._name = pluginName;
-      this.$element = $(this.element);
-      this.init();
-    }
-
-    _createClass(Plugin, [{
-      key: 'init',
-      value: function init() {
-        this.$element.SimpleFormNestedFields__Links();
-        if (this.is_sortable()) {
-          return this.$element.SimpleFormNestedFields__Sortable();
-        }
-      }
-    }, {
-      key: 'destroy',
-      value: function destroy() {
-        this.$element.data('plugin_SimpleFormNestedFields__Links').destroy();
-        return this.$element.data('plugin_SimpleFormNestedFields__Sortable').destroy();
-      }
-    }, {
-      key: 'is_sortable',
-      value: function is_sortable() {
-        return this.element.classList.contains('simple_form_nested_fields--sortable');
-      }
-    }]);
-
-    return Plugin;
-  }();
-  // A really lightweight plugin wrapper around the constructor,
-  // preventing against multiple instantiations
-  return $.fn[pluginName] = function (options) {
-    return this.each(function () {
-      if (!$.data(this, 'plugin_' + pluginName)) {
-        return $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
-      }
-    });
-  };
-})(jQuery, window, document);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ })
 /******/ ]);

@@ -1,5 +1,5 @@
 {
-  "name": "simple_form_nested_fields",
+  "name": "@tomasc/simple_form_nested_fields",
   "version": "0.3.0",
   "description": "…",
   "main": "package/dist/index.js",

@@ -1,29 +1,22 @@
-do ($ = jQuery, window, document) ->
-  pluginName = 'SimpleFormNestedFields'
-  defaults =
+import Plugin from './plugin'
+
+import Links from './__links'
+import SortableFields from './__sortable_fields'
+
+export default class SimpleFormNestedFields extends Plugin
+  @defaults =
+    name: 'SimpleFormNestedFields'
     debug: false
 
-  class Plugin
-    constructor: (@element, options) ->
-      @options = $.extend {}, defaults, options
-      @_defaults = defaults
-      @_name = pluginName
-      @$element = $(@element)
-      @init()
+  init: ->
+    @Links = new Links(@element)
+    @SortableFields = new SortableFields(@element) if @is_sortable()
 
-    init: ->
-      @$element.SimpleFormNestedFields__Links()
-      @$element.SimpleFormNestedFields__Sortable() if @is_sortable()
+  destroy: ->
+    @Links.destroy() if @Links
+    @Links = undefined
 
-    destroy: ->
-      @$element.data('plugin_SimpleFormNestedFields__Links').destroy()
-      @$element.data('plugin_SimpleFormNestedFields__Sortable').destroy()
+    @SortableFields.destroy() if @SortableFields
+    @SortableFields = undefined
 
-    is_sortable: -> @element.classList.contains('simple_form_nested_fields--sortable')
-
-  # A really lightweight plugin wrapper around the constructor,
-  # preventing against multiple instantiations
-  $.fn[pluginName] = (options) ->
-    @each ->
-      if !$.data(@, "plugin_#{pluginName}")
-        $.data(@, "plugin_#{pluginName}", new Plugin(@, options))
+  is_sortable: -> @element.classList.contains('simple_form_nested_fields--sortable')
