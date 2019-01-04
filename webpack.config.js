@@ -21,10 +21,10 @@ module.exports = {
       }
     ],
   },
-  externals: {
-    jquery: 'jquery',
-    sortablejs: 'sortablejs'
-  },
+  externals: [
+    'jquery',
+    'sortablejs'
+  ],
   entry: './package/src/index.js',
   output: {
     library: '@tomasc/simple_form_nested_fields',
