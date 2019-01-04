@@ -33,7 +33,7 @@ module.exports = {
     path: path.resolve(__dirname, 'package/dist')
   },
   plugins: [
-    new MiniCssExtractPlugin,
+    new MiniCssExtractPlugin({ filename: 'index.css' }),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery"
