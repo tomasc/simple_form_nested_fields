@@ -1,3 +1,5 @@
+import Plugin from './plugin'
+
 import Sortable from 'sortablejs'
 
 export default class SortableFields extends Plugin
@@ -6,7 +8,7 @@ export default class SortableFields extends Plugin
     debug: false
 
   init: ->
-    return if @sortable
+    return if !!@sortable
 
     @sortable = new Sortable(
       @get_items_container()[0],
