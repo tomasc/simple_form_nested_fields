@@ -9,8 +9,8 @@ export default class SimpleFormNestedFields extends Plugin
     debug: false
 
   init: ->
-    @Links = new Links(@element)
-    @SortableFields = new SortableFields(@element) if @is_sortable()
+    @Links = new Links(@element) unless !!@Links
+    @SortableFields = new SortableFields(@element) unless !@is_sortable() || !!@SortableFields
 
   destroy: ->
     @Links.destroy() if @Links
