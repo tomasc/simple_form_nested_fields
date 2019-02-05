@@ -20,13 +20,13 @@ export default class Links extends Plugin
     @$element.off '.SimpleFormNestedFields__Links'
 
   get_index: -> new Date().getTime()
-  get_item_class_name: -> @get_select().val()
+  get_item_class_name: (link) -> @get_select(link).val()
   get_items_container: -> @$element.find('.simple_form_nested_fields__items')
   get_template: (link) ->
-    item_class_name = @get_item_class_name()
+    item_class_name = @get_item_class_name(link)
     $template = @$element.find("template[data-class='#{item_class_name}']").first()
     $template.html().replace(@options.regexp, @get_index())
-  get_select: -> @$element.find('.simple_form_nested_fields__select--add')
+  get_select: (link) -> $(link).siblings('.simple_form_nested_fields__select--add')
 
   add_new_item: (link) ->
     $template = $(@get_template(link))
