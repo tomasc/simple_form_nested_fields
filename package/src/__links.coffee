@@ -21,7 +21,7 @@ export default class Links extends Plugin
 
   get_index: -> new Date().getTime()
   get_item_class_name: (link) -> @get_select(link).val()
-  get_items_container: -> @$element.find('.simple_form_nested_fields__items')
+  get_items_container: -> @$element.children('.simple_form_nested_fields__items')
   get_template: (link) ->
     item_class_name = @get_item_class_name(link)
     $template = @$element.find("template[data-class='#{item_class_name}']").first()
