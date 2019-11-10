@@ -13,12 +13,12 @@
     "build": "webpack"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.0.0",
-    "babel-plugin-lodash": "^3.3.4",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
-    "coffee-loader": "^0.9.0",
-    "coffeescript": "^2.0.2",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-transform-classes": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-istanbul": "^5.1.1",
     "css-loader": "^2.1.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.8.3",
@@ -30,11 +30,11 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "jquery": "^3.2.1",
+    "stimulus": "^1.1.1",
     "sortablejs": "^1.7.0"
   },
   "peerDependencies": {
-    "jquery": "^3.2.1",
+    "stimulus": "^1.1.1",
     "sortablejs": "^1.7.0"
   }
 }
