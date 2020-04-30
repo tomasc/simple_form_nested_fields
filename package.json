@@ -30,11 +30,11 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "sortablejs": "^1.7.0"
   },
   "peerDependencies": {
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "sortablejs": "^1.7.0"
   }
 }
